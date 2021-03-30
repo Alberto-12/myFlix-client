@@ -15,5 +15,17 @@
   "bugs": {
     "url": "https://github.com/Alberto-12/myFlix-client/issues"
   },
-  "homepage": "https://github.com/Alberto-12/myFlix-client#readme"
+  "homepage": "https://github.com/Alberto-12/myFlix-client#readme",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "ba": "0.0.5",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "sass": "^1.32.8"
+  }
 }
