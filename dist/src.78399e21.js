@@ -29678,7 +29678,9 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
   _createClass(MovieView, [{
     key: "render",
     value: function render() {
-      var movie = this.props.movie;
+      var _this$props = this.props,
+          movie = _this$props.movie,
+          onBackClick = _this$props.onBackClick;
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "movie-view"
       }, /*#__PURE__*/_react.default.createElement("div", {
@@ -29697,7 +29699,17 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Description: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, movie.Description)));
+      }, movie.Description)), /*#__PURE__*/_react.default.createElement("div", {
+        className: "movie-director"
+      }, /*#__PURE__*/_react.default.createElement("span", {
+        className: "label"
+      }, "Director: "), /*#__PURE__*/_react.default.createElement("span", {
+        className: "value"
+      }, movie.Director)), /*#__PURE__*/_react.default.createElement("button", {
+        onClick: function onClick() {
+          onBackClick(null);
+        }
+      }, "Back"));
     }
   }]);
 
@@ -29759,17 +29771,20 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         _id: 1,
         Title: "Inception",
         Description: "desc1...",
-        ImagePath: "..."
+        ImagePath: "...",
+        Director: "Jhon"
       }, {
         _id: 2,
         Title: "The Shawshank Redemption",
         Description: "desc2...",
-        ImagePath: "..."
+        ImagePath: "...",
+        Director: "Alberto"
       }, {
         _id: 3,
         Title: "Gladiator",
         Description: "desc3...",
-        ImagePath: "..."
+        ImagePath: "...",
+        Director: "Austin night"
       }],
       selectedMovie: null
     };
@@ -29792,7 +29807,10 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           movies = _this$state.movies,
           selectedMovie = _this$state.selectedMovie;
       if (selectedMovie) return /*#__PURE__*/_react.default.createElement(_movieView.MovieView, {
-        movie: selectedMovie
+        movie: selectedMovie,
+        onBackClick: function onBackClick(newSelectedMovie) {
+          _this2.setSelectedMovie(newSelectedMovie);
+        }
       });
       if (movies.length === 0) return /*#__PURE__*/_react.default.createElement("div", {
         className: "main-view"
@@ -29803,8 +29821,10 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/_react.default.createElement(_movieCard.MovieCard, {
           key: movie._id,
           movie: movie,
-          onMovieClick: function onMovieClick(movie) {
-            _this2.setSelectedMovie(movie);
+          onMovieClick: function onMovieClick(newSelectedMovie) {
+            _this2.setState({
+              selectedMovie: newSelectedMovie
+            });
           }
         });
       }));
@@ -29976,7 +29996,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53516" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60208" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

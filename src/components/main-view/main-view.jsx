@@ -12,18 +12,21 @@ export class MainView extends React.Component {
           Title: "Inception",
           Description: "desc1...",
           ImagePath: "...",
+          Director: "Jhon"
         },
         {
           _id: 2,
           Title: "The Shawshank Redemption",
           Description: "desc2...",
           ImagePath: "...",
+          Director: "Alberto"
         },
         {
           _id: 3,
           Title: "Gladiator",
           Description: "desc3...",
           ImagePath: "...",
+          Director: "Austin night"
         },
       ],
       selectedMovie: null
@@ -36,14 +39,14 @@ export class MainView extends React.Component {
   }
   render() {
     const { movies, selectedMovie } = this.state;
-  
-    if (selectedMovie) return <MovieView movie={selectedMovie} />;
-  
+
+    if (selectedMovie) return <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />;
+
     if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
-  
+
     return (
       <div className="main-view">
-        {movies.map(movie => <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }} />)}
+        {movies.map(movie => <MovieCard key={movie._id} movie={movie} onMovieClick={newSelectedMovie => { this.setState({ selectedMovie: newSelectedMovie }); }} />)}
       </div>
     );
   }
