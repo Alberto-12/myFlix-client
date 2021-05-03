@@ -6,6 +6,8 @@ import { LoginView } from "../login-view/login-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import { Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import {DirectorView} from "../director-view/director-view";
+import { GenreView }  from "../genre-view/genre-view";
 
 export class MainView extends React.Component {
   constructor() {
@@ -108,7 +110,7 @@ export class MainView extends React.Component {
             }}
           />
 
-          {/* <Route
+          <Route
             path="/directors/:name"
             render={({ match }) => {
               if (movies.length === 0) return <div className="main-view" />;
@@ -117,7 +119,6 @@ export class MainView extends React.Component {
                   <DirectorView
                     director={
                       movies.find((m) => m.Director.Name === match.params.name)
-                        .Director
                     }
                   />
                 </Col>
@@ -133,13 +134,12 @@ export class MainView extends React.Component {
                   <GenreView
                     genre={
                       movies.find((m) => m.Genre.Name === match.params.name)
-                        .Genre
                     }
                   />
                 </Col>
               );
             }}
-          /> */}
+          />
         </Row>
       </Router>
     );
