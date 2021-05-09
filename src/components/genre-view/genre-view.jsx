@@ -24,10 +24,10 @@ export class GenreView extends React.Component {
       <Row>
         <Col className="col-3" />
         <Col className="genre-view container-fluid align-items-center col-6">
-          <img
+          {/* <img
             className="genre-poster "
             src="https://via.placeholder.com/150"
-          />
+          /> */}
           <div className="genre-title ">
             {/* <span className="label">Name: </span> */}
             <span className="value">{genre.Genre.Name}</span>

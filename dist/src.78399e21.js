@@ -51285,10 +51285,7 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
         className: "col-3"
       }), /*#__PURE__*/_react.default.createElement(_Col.default, {
         className: "director-view container-fluid align-items-center col-6"
-      }, /*#__PURE__*/_react.default.createElement("img", {
-        className: "director-poster",
-        src: "https://via.placeholder.com/150"
-      }), /*#__PURE__*/_react.default.createElement("div", {
+      }, /*#__PURE__*/_react.default.createElement("div", {
         className: "director-title"
       }, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
@@ -51411,10 +51408,7 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
         className: "col-3"
       }), /*#__PURE__*/_react.default.createElement(_Col.default, {
         className: "genre-view container-fluid align-items-center col-6"
-      }, /*#__PURE__*/_react.default.createElement("img", {
-        className: "genre-poster ",
-        src: "https://via.placeholder.com/150"
-      }), /*#__PURE__*/_react.default.createElement("div", {
+      }, /*#__PURE__*/_react.default.createElement("div", {
         className: "genre-title "
       }, /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
@@ -51476,6 +51470,8 @@ var _genreView = require("../genre-view/genre-view");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -51574,27 +51570,91 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "logOut",
+    value: function logOut() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      this.setState({
+        user: null
+      });
+      console.log("logout successful");
+      alert("You have been successfully logged out");
+      window.open("/", "_self");
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this3 = this,
+          _React$createElement;
 
       var _this$state = this.state,
           movies = _this$state.movies,
-          user = _this$state.user;
-      if (!user) return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/_react.default.createElement(_loginView.LoginView, {
-        onLoggedIn: function onLoggedIn(user) {
-          return _this3.onLoggedIn(user);
+          user = _this$state.user; // if (!user)
+      //   return (
+      //     <Row>
+      //       <Col>
+      //         <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+      //       </Col>
+      //     </Row>
+      //   );
+      // if (movies.length === 0) return <div className="main-view" />;
+
+      return /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar, (_React$createElement = {
+        expand: "lg",
+        sticky: "top",
+        variant: "dark"
+      }, _defineProperty(_React$createElement, "expand", "lg"), _defineProperty(_React$createElement, "className", "navbar shadow-sm mb-5"), _React$createElement), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Brand, {
+        href: "http://localhost:1234",
+        className: "navbar-brand"
+      }, "FlixNET"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Toggle, {
+        "aria-controls": "basic-navbar-nav"
+      }), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Collapse, {
+        className: "justify-content-end",
+        id: "basic-navbar-nav"
+      }, !user ? /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: "/"
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+        variant: "link",
+        className: "navbar-link"
+      }, "Sign In")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: "/register"
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+        variant: "link",
+        className: "navbar-link"
+      }, "Register"))) : /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: "/"
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+        variant: "link",
+        className: "navbar-link",
+        onClick: function onClick() {
+          return _this3.logOut();
         }
-      })));
-      if (movies.length === 0) return /*#__PURE__*/_react.default.createElement("div", {
-        className: "main-view"
-      });
-      return /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, {
+      }, "Sign Out")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: "/users/".concat(user)
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+        variant: "link",
+        className: "navbar-link"
+      }, "My Account")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: "/"
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+        variant: "link",
+        className: "navbar-link"
+      }, "Movies")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: "/about"
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+        variant: "link",
+        className: "navbar-link"
+      }, "About"))))), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, {
         className: "main-view justify-content-md-center"
       }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/",
         render: function render() {
+          if (!user) return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/_react.default.createElement(_loginView.LoginView, {
+            onLoggedIn: function onLoggedIn(user) {
+              return _this3.onLoggedIn(user);
+            }
+          }));
           return movies.map(function (m) {
             return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, {
               md: 3,
@@ -51603,6 +51663,11 @@ var MainView = /*#__PURE__*/function (_React$Component) {
               movie: m
             }));
           });
+        }
+      }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+        path: "/register",
+        render: function render() {
+          return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/_react.default.createElement(_registrationView.RegistrationView, null));
         }
       }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
         path: "/movies/:movieId",
@@ -51750,7 +51815,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59505" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49685" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
