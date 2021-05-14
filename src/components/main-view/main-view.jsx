@@ -9,6 +9,9 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
 import { Link } from "react-router-dom";
+import "./main-view.scss"
+import {ProfileView } from "../profile-view/profile-view";
+import { UpdateView } from "../update-view/update-view";
 
 export class MainView extends React.Component {
   constructor() {
@@ -226,6 +229,17 @@ export class MainView extends React.Component {
                   />
                 </Col>
               );
+            }}
+          />
+          <Route
+            exact
+            path="/users/:userId"
+            render={() => <ProfileView movies={movies} />}
+          />
+           <Route
+            path="/update/:userId"
+            render={() => {
+              return <UpdateView />;
             }}
           />
         </Row>
