@@ -57,22 +57,22 @@ export class ProfileView extends React.Component {
       });
   }
 
-  //   removeFavorite(movie) {
-  //     let token = localStorage.getItem("token");
-  //     let url =
-  //       "https://my-flix-db-app.herokuapp.com/users/" +
-  //       localStorage.getItem("user") +
-  //       "/favorites/" +
-  //       movie._id;
-  //     axios
-  //       .delete(url, {
-  //         headers: { Authorization: `Bearer ${token}` },
-  //       })
-  //       .then((response) => {
-  //         console.log(response);
-  //         this.componentDidMount();
-  //       });
-  //   }
+    removeFavorite(movie) {
+      let token = localStorage.getItem("token");
+      let url =
+        "https://austin-night.herokuapp.com/users/" +
+        localStorage.getItem("user") +
+        "/movies/" +
+        movie._id;
+      axios
+        .delete(url, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => {
+          console.log(response);
+          this.componentDidMount();
+        });
+    }
 
   handleDelete() {
     let token = localStorage.getItem("token");
@@ -94,11 +94,11 @@ export class ProfileView extends React.Component {
 
   render() {
     const { movies } = this.props;
-    // this.getUser(localStorage.getItem("token"));
-    // const favoriteMovieList = movies.filter((movie) => {
-    //   return this.state.favoriteMovies.includes(movie._id);
-    // });
-    // console.log(favoriteMovieList);
+    this.getUser(localStorage.getItem("token"));
+    const favoriteMovieList = movies.filter((movie) => {
+      return this.state.favoriteMovies.includes(movie._id);
+    });
+    console.log(favoriteMovieList);
 
     if (!movies) alert("Please sign in");
     return (
@@ -140,7 +140,7 @@ export class ProfileView extends React.Component {
                 </Button>
               </Form>
             </Col>
-            {/* <Col>
+            <Col>
               <div
                 className="favoriteMovies"
                 style={{
@@ -167,7 +167,7 @@ export class ProfileView extends React.Component {
                   );
                 })}
               </div>
-            </Col> */}
+            </Col>
           </Row>
         </Container>
       </div>

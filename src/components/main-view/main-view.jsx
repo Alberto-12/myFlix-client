@@ -211,6 +211,7 @@ export class MainView extends React.Component {
                     director={movies.find(
                       (m) => m.Director.Name === match.params.name
                     )}
+                    movies = { movies }
                   />
                 </Col>
               );
@@ -226,6 +227,7 @@ export class MainView extends React.Component {
                     genre={movies.find(
                       (m) => m.Genre.Name === match.params.name
                     )}
+                    movies = { movies }
                   />
                 </Col>
               );
