@@ -12,13 +12,13 @@ import { Link } from "react-router-dom";
 import "./main-view.scss"
 import {ProfileView } from "../profile-view/profile-view";
 import { UpdateView } from "../update-view/update-view";
+import { setMovies } from '../../actions/actions';
+// import MoviesList from '../movies-list/movies-list';
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
-      movies: [],
-      selectedMovie: null,
       user: null,
     };
   }
@@ -65,9 +65,7 @@ export class MainView extends React.Component {
       })
       .then((response) => {
         // Assign the result to the state
-        this.setState({
-          movies: response.data,
-        });
+        this.props.setMovies(response.data);  
       })
       .catch(function (error) {
         console.log(error);
@@ -86,8 +84,9 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, user } = this.state;
-
+    
+    let { movies } = this.props;
+    let { user } = this.state;
     // if (!user)
     //   return (
     //     <Row>
