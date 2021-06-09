@@ -13,7 +13,8 @@ import "./main-view.scss"
 import {ProfileView } from "../profile-view/profile-view";
 import { UpdateView } from "../update-view/update-view";
 import { setMovies } from '../../actions/actions';
-// import MoviesList from '../movies-list/movies-list';
+import { connect } from 'react-redux';
+import MoviesList from '../movies-list/movies-list';
 
 class MainView extends React.Component {
   constructor() {
@@ -169,11 +170,7 @@ class MainView extends React.Component {
                     <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
                   </Col>
                 );
-              return movies.map((m) => (
-                <Col md={3} key={m._id}>
-                  <MovieCard movie={m} />
-                </Col>
-              ));
+                return <MoviesList movies={movies}/>;
             }}
           />
           <Route
@@ -248,3 +245,10 @@ class MainView extends React.Component {
     );
   }
 }
+
+let mapStateToProps = state => {
+  return { movies: state.movies }
+}
+
+// #8
+export default connect(mapStateToProps, { setMovies } )(MainView);
