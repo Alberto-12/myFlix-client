@@ -38695,7 +38695,8 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return MovieCard;
-}(_react.default.Component);
+}(_react.default.Component); //
+
 
 exports.MovieCard = MovieCard;
 },{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"../node_modules/react-bootstrap/esm/Col.js":[function(require,module,exports) {
@@ -53573,6 +53574,7 @@ function LoginView(props) {
       props.onLoggedIn(data);
     }).catch(function (e) {
       console.log('no such user');
+      alert("user name does not exist");
     });
   };
 
@@ -55061,7 +55063,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57322" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57054" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

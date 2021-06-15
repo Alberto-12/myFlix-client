@@ -22,6 +22,7 @@ export function LoginView(props) {
     })
     .catch(e => {
       console.log('no such user')
+      alert("user name does not exist")
     });
   };
 
