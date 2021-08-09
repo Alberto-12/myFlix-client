@@ -49,7 +49,6 @@ export function UpdateView(props) {
           window.open("/", "_self");
         })
         .catch((e) => {
-          console.log(e);
           alert("Username contains non alphanumeric characters - not allowed");
         });
     }

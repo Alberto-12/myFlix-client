@@ -13,6 +13,7 @@ import "./main-view.scss"
 import {ProfileView } from "../profile-view/profile-view";
 import { UpdateView } from "../update-view/update-view";
 import { setMovies } from '../../actions/actions';
+import { setUser } from '../../actions/actions';
 import { connect } from 'react-redux';
 import MoviesList from '../movies-list/movies-list';
 
@@ -35,7 +36,6 @@ class MainView extends React.Component {
   }
 
   onLoggedIn(authData) {
-    console.log(authData);
     this.setState({
       user: authData.user.Username,
     });
@@ -69,7 +69,6 @@ class MainView extends React.Component {
         this.props.setMovies(response.data);  
       })
       .catch(function (error) {
-        console.log(error);
       });
   }
 
@@ -79,7 +78,6 @@ class MainView extends React.Component {
     this.setState({
       user: null,
     });
-    console.log("logout successful");
     alert("You have been successfully logged out");
     window.open("/", "_self");
   }
@@ -247,8 +245,8 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = state => {
-  return { movies: state.movies }
+  return { movies: state.movies, user: state.user } 
 }
 
 // #8
-export default connect(mapStateToProps, { setMovies } )(MainView);
+export default connect(mapStateToProps, { setMovies,setUser }  )(MainView);

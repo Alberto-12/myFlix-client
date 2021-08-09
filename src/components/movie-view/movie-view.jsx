@@ -24,14 +24,12 @@ export class MovieView extends React.Component {
       "/movies/" +
       movie._id;
 
-    console.log(token);
 
     axios
       .post(url, "", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        console.log(response);
         // window.open("/", "_self");
         window.open("/movies/" + movie._id, "_self");
         alert("Added to favorites!");

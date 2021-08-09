@@ -12,8 +12,10 @@ import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
 
 import axios from "axios";
+import { setUser } from '../../actions/actions';
+import { connect } from 'react-redux'; 
 
-export class ProfileView extends React.Component {
+ class ProfileView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -69,7 +71,6 @@ export class ProfileView extends React.Component {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
-          console.log(response);
           this.componentDidMount();
         });
     }
@@ -88,7 +89,6 @@ export class ProfileView extends React.Component {
         window.location.pathname = "/";
       })
       .catch(function (error) {
-        console.log(error);
       });
   }
 
@@ -178,3 +178,10 @@ export class ProfileView extends React.Component {
 ProfileView.propTypes = {
   movies: PropTypes.array.isRequired,
 };
+
+
+let mapStateToProps = state => {
+  return { movies: state.movies, user: state.user } 
+}
+
+export default connect(mapStateToProps, { setUser }  )(ProfileView);
